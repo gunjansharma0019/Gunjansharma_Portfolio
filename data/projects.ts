@@ -49,7 +49,7 @@ export const projects: Project[] = [
     description:
       "An intelligent document classification system that automatically categorizes documents using machine learning and NLP techniques.",
     technologies: ["Python", "NLP", "Machine Learning"],
-    github: "https://github.com/your-username/document-classifier", // [GitHub URL]
+    github: "https://github.com/gunjansharma0019/classifier", // [GitHub URL]
     demo: undefined,
     image: "/images/projects/document-classifier.png",
     featured: true,
@@ -60,7 +60,7 @@ export const projects: Project[] = [
     description:
       "A modern responsive portfolio showcasing projects, skills, experience, and achievements.",
     technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-    github: "https://github.com/your-username/portfolio", // [GitHub URL]
+    github: "https://github.com/gunjansharma0019/Gunjansharma_Portfolio", // [GitHub URL]
     demo: "https://gunjansharma.dev", // [Project URL]
     image: "/images/projects/portfolio.png",
     featured: true,
