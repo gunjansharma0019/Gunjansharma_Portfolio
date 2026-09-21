@@ -16,8 +16,8 @@ export const projects: Project[] = [
     description:
       "An AI-powered resume screening system that analyzes resumes and helps identify relevant candidates based on job requirements.",
     technologies: ["Python", "Machine Learning", "NLP", "Streamlit"],
-    github: "https://github.com/your-username/smart-resume-screening", // [GitHub URL]
-    demo: undefined, // [Project URL]
+    github: "https://github.com/gunjansharma0019/smart-resume-screening", // [GitHub URL]
+    demo: "https://gunjansharma0019-smart-resume-screening-app-frrah6.streamlit.app", // [Project URL]
     image: "/images/projects/resume-screening.png",
     featured: true,
   },
