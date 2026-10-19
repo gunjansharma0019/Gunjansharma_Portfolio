@@ -65,39 +65,35 @@ def split_text(pages_text, chunk_size=700, overlap=100):
 # -------------------- AI ANSWER GENERATION --------------------
 
 def generate_answer(question, context):
-    prompt = f"""You are a helpful PDF question-answering assistant.
+    from groq import Groq
 
-Answer the user's question using the provided PDF context.
-Be clear, accurate, and easy to understand.
-Do not invent facts.
-If the context does not contain the answer, say that
-the PDF does not provide enough information.
+    client = Groq(api_key=st.secrets["GROQ_API_KEY"])
 
-The context contains PDF page labels. Use the relevant
-information to answer the question.
-
-PDF CONTEXT:
-{context}
-
-USER QUESTION:
-{question}
-
-ANSWER:
-"""
-
-    response = requests.post(
-        OLLAMA_URL,
-        json={
-            "model": OLLAMA_MODEL,
-            "prompt": prompt,
-            "stream": False
-        },
-        timeout=180
+    response = client.chat.completions.create(
+        model="openai/gpt-oss-120b",
+        messages=[
+            {
+                "role": "system",
+                "content": (
+                    "You are a helpful PDF question-answering assistant. "
+                    "Answer using only the provided PDF context. "
+                    "Do not invent facts. If the answer is missing, "
+                    "say the PDF does not provide enough information. "
+                    "Use relevant PDF page labels in your answer."
+                ),
+            },
+            {
+                "role": "user",
+                "content": (
+                    f"PDF CONTEXT:\n{context}\n\n"
+                    f"USER QUESTION:\n{question}"
+                ),
+            },
+        ],
+        temperature=0.2,
     )
 
-    response.raise_for_status()
-
-    return response.json()["response"].strip()
+    return response.choices[0].message.content or "No answer generated."
 
 
 # -------------------- PDF UPLOAD --------------------
